@@ -23,9 +23,9 @@
           </svg>
         </a>
 
-        <div class="search" data-search-path="Pages.Search.html?q=">
-          <input placeholder="Search..." name="q" v-model="q" />
-          <span class="search-icon">
+        <div class="search">
+          <input placeholder="Search..." v-model="q" />
+          <span class="search-icon" v-on:click="search">
             <i class="simple-icon-magnifier"></i>
           </span>
         </div>
@@ -55,29 +55,28 @@
       <div class="main-menu">
         <div class="scroll">
           <ul class="list-unstyled">
-            <li class="active">
+            <li v-bind:class="{'active': $route.path == '/'}">
               <router-link to="/">
                 <i class="iconsminds-shop-4"></i>
                 <span>Dashboards</span>
               </router-link>
             </li>
-            <li>
+            <li v-bind:class="{'active': $route.path == '/mapa-regiao'}">
               <router-link to="/mapa-regiao">
                 <i class="iconsminds-google"></i> Map
               </router-link>
             </li>
-            <li>
+            <li v-bind:class="{'active': $route.path == '/pesquisa'}">
               <router-link to="/pesquisa">
                 <i class="iconsminds-air-balloon-1"></i> Pesquisa
               </router-link>
             </li>
-            <li>
+            <li v-bind:class="{'active': $route.path == '/formulario'}">
               <router-link to="/formulario">
                 <i class="iconsminds-air-balloon-1"></i> Formulário
               </router-link>
             </li>
-
-            <li>
+            <li v-bind:class="{'active': $route.path == '/querm_somos'}">
               <router-link to="/querm_somos">
                 <i class="iconsminds-air-balloon-1"></i> Quem somos
               </router-link>
@@ -100,7 +99,8 @@ export default {
   data() {
     return {
       paises: [],
-      pais: "BR"
+      pais: "BR",
+      q: ""
     };
   },
   computed: {},
@@ -108,6 +108,13 @@ export default {
     this.carregaPais();
   },
   methods: {
+    search: function() {
+      this.$router.push({
+        name: "/pesquisa",
+        query: {q: this.q },
+      });
+      return false;
+    },
     getImageStyle(pais) {
       let url = this.getImage(pais);
       return `background: url("${url}");`;
@@ -146,8 +153,12 @@ export default {
   background-color: rgb(226, 226, 226);
   border-radius: 0px 0px 0px 0px;
 }
+.pais {
+  margin-right: 10px;
+}
 .pais img {
   width: 50px;
+  margin-bottom: -8px;
 }
 .select-image {
   position: absolute;

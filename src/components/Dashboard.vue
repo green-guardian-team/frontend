@@ -1,64 +1,75 @@
 <template>
-  <div class="container">
+  <div :class="{'disabled': loading}">
+    <div class="loading" v-if="loading"></div>
     <div class="row">
-      <div class="card card-body text-center col-md-4">
-        <p
-          class="lead color-red red-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
-        >{{data.totalConfirmed}}</p>
-        <p
-          class="card-text color-red red-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
-        >Confirmados</p>
+      <div class="col-md-4 col-4">
+        <div class="card card-body text-center">
+          <p
+            class="lead color-red red-bg-number text-center card-text pb-3 pt-3 mb-0 bold card-text-radius-top"
+          >{{data.totalConfirmed}}</p>
+          <p
+            class="card-text color-red red-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
+          >Confirmados</p>
+        </div>
       </div>
-      <div class="card card-body text-center col-md-4 mr-5 ml-5">
-        <p
-          class="lead color-green green-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
-        >{{data.totalRecovered}}</p>
-        <p
-          class="card-text color-green green-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
-        >Recuperados</p>
+      <div class="col-md-4 col-4">
+        <div class="card card-body text-center">
+          <p
+            class="lead color-green green-bg-number text-center card-text pb-3 pt-3 mb-0 bold card-text-radius-top"
+          >{{data.totalRecovered }}</p>
+          <p
+            class="card-text color-green green-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
+          >Recuperados</p>
+        </div>
       </div>
-      <div class="card card-body text-center">
-        <p
-          class="lead color-neutral neutral-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
-        >{{data.totalDeaths}}</p>
-        <p
-          class="card-text color-neutral neutral-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
-        >Casos fatais</p>
+      <div class="col-md-4 col-4">
+        <div class="card card-body text-center">
+          <p
+            class="lead color-neutral neutral-bg-number text-center card-text pb-3 pt-3 mb-0 bold card-text-radius-top"
+          >{{data.totalDeaths}}</p>
+          <p
+            class="card-text color-neutral neutral-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
+          >Casos fatais</p>
+        </div>
       </div>
     </div>
     <div class="row mt-4 graph">
-      <div class="card">
-        <h2 class="mt-3">Consulte dados da COVID-19 em tempo real!</h2>
-        <hr />
-        <div class="d-flex justify-content-between">
-          <div class="flex-start">
-            <label for="dataAnterior" class="ml-3">Selecione uma data do passado que deseja visualizar! </label>
-            <select v-model="diaAnterior">
-              <option v-for="(item, key) in diasAnteriores" v-bind:key="key" v-bind:value="item">{{item}}</option>
-            </select> 
-            <select v-model="mesAnterior">
-              <option v-for="(item, key) in mesesAnteriores" v-bind:key="key" v-bind:value="item">{{item}}</option>
-            </select>
-            <select v-model="anoAnterior">
-              <option v-for="(item, key) in anosAnteriores" v-bind:key="key" v-bind:value="item">{{item}}</option>
-            </select>
+      <div class="col">
+        <div class="card">
+          <h2 class="mt-3">Consulte dados da COVID-19 em tempo real!</h2>
+          <hr />
+          <div class="d-flex justify-content-between">
+            <div class="flex-start">
+              <label
+                for="dataAnterior"
+                class="ml-3"
+              >Selecione uma data do passado que deseja visualizar!</label>
+              <select v-model="diaAnterior">
+                <option v-for="(item, key) in dias" v-bind:key="key" v-bind:value="item">{{item}}</option>
+              </select>
+              <select v-model="mesAnterior">
+                <option v-for="(item, key) in meses" v-bind:key="key" v-bind:value="item">{{item}}</option>
+              </select>
+              <select v-model="anoAnterior">
+                <option v-for="(item, key) in anos" v-bind:key="key" v-bind:value="item">{{item}}</option>
+              </select>
+            </div>
+            <div class="flex-end">
+              <label for="dataAnterior">Selecione até qual data você quer ver sobre a COVID!</label>
+              <select v-model="dia">
+                <option v-for="(item, key) in dias" v-bind:key="key" v-bind:value="item">{{item}}</option>
+              </select>
+              <select v-model="mes">
+                <option v-for="(item, key) in meses" v-bind:key="key" v-bind:value="item">{{item}}</option>
+              </select>
+              <select v-model="ano" class="mr-3">
+                <option v-for="(item, key) in anos" v-bind:key="key" v-bind:value="item">{{item}}</option>
+              </select>
+            </div>
           </div>
-          <div class="flex-end">
-            <label for="dataAnterior">Selecione até qual data você quer ver sobre a COVID! </label>
-            <select v-model="dia">
-              <option v-for="(item, key) in dias" v-bind:key="key" v-bind:value="item">{{item}}</option>
-            </select>
-            <select v-model="mes">
-              <option v-for="(item, key) in meses" v-bind:key="key" v-bind:value="item">{{item}}</option>
-            </select>
-            <select v-model="ano" class="mr-3">
-              <option v-for="(item, key) in anos" v-bind:key="key" v-bind:value="item">{{item}}</option>
-            </select>  
-          </div>
+          <div id="container-graph" class="grafico mt-3 mb-3"></div>
         </div>
-        <div id="container-graph" class="grafico mt-3 mb-3"></div>
       </div>
-      
     </div>
   </div>
 </template>
@@ -71,73 +82,111 @@ export default {
   },
   data() {
     return {
+      loading: true,
       data: {},
       dataPorDia: [],
-      paises: ["BR", "US", "CA", "FR"],
       anoAnterior: "2020",
-      anosAnteriores: ["2019", "2020", "2021"],
       ano: "2020",
-      anos: ["2019", "2020", "2021"],
       mesAnterior: "05",
-      mesesAnteriores: ["02", "03", "04", "05", "06", "07"],
-      mes:"06",
-      meses: ["02", "03", "04", "05", "06", "07"],
+      mes: "06",
       diaAnterior: "22",
-      diasAnteriores: ["01","02" ,"03" ,"04" ,"05" ,"06" ,"07" ,"08" ,"09" ,"10" ,"11" ,"12" ,"13" ,"14" ,"15" ,"16" ,"17","18" ,"19" ,"20" ,"21" ,"22" ,"23" ,"24" ,"25" ,"26" ,"27" ,"28" ,"29" ,"30" ,"31"],
-      dia:"01",
-      dias: ["01","02" ,"03" ,"04" ,"05" ,"06" ,"07" ,"08" ,"09" ,"10" ,"11" ,"12" ,"13" ,"14" ,"15" ,"16" ,"17","18" ,"19" ,"20" ,"21" ,"22" ,"23" ,"24" ,"25" ,"26" ,"27" ,"28" ,"29" ,"30" ,"31"]
+      dia: "01",
+      anos: ["2019", "2020", "2021"],
+      meses: [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12"
+      ],
+      dias: [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31"
+      ]
     };
   },
   watch: {
-    pais: function () {
+    pais: function() {
       this.carregarDados();
       this.carregarDadosPorDia();
     },
-    anoAnterior: function () {
-      this.carregarDados();
+    anoAnterior: function() {
       this.carregarDadosPorDia();
     },
-    mesAnterior: function () {
-      this.carregarDados();
+    mesAnterior: function() {
       this.carregarDadosPorDia();
     },
-    diaAnterior: function () {
-      this.carregarDados();
+    diaAnterior: function() {
       this.carregarDadosPorDia();
     },
-    ano: function () {
-      this.carregarDados();
+    ano: function() {
       this.carregarDadosPorDia();
     },
-    mes: function () {
-      this.carregarDados();
+    mes: function() {
       this.carregarDadosPorDia();
     },
-    dia: function () {
-      this.carregarDados();
+    dia: function() {
       this.carregarDadosPorDia();
     }
   },
   mounted() {
-    let d = new Date()
+    let d = new Date();
     this.ano = d.getFullYear();
-    this.mes = "0" +(d.getMonth() + 1);
+    this.mes = "0" + (d.getMonth() + 1);
     this.dia = d.getDate();
     this.anoAnterior = d.getFullYear();
-    this.mesAnterior = "0" +d.getMonth();
-    this.diaAnterior = d.getDate() -1;
+    this.mesAnterior = "0" + d.getMonth();
+    this.diaAnterior = d.getDate() - 1;
     this.carregarDados();
     this.carregarDadosPorDia();
     this.carregarDadosUltimasNoticias();
   },
   methods: {
     carregarDados: function() {
+      this.loading = true;
       this.axios
         .get(
           `https://api.coronatracker.com/v3/stats/worldometer/country?countryCode=${this.pais}`
         )
         .then(response => {
           this.data = response.data[0];
+          this.loading = false;
         });
     },
     carregarDadosPorDia: function() {
@@ -145,16 +194,21 @@ export default {
         .get(
           `https://api.coronatracker.com/v4/analytics/trend/country?countryCode=${this.pais}&startDate=${this.anoAnterior}-${this.mesAnterior}-${this.diaAnterior}&endDate=${this.ano}-${this.mes}-${this.dia}`
         )
-        .then(response => {
-          this.dataPorDia = response.data;
-          if(response.data != "Invalid date" && response.data.length >= 1){
-            this.carregaGrafico();
-          }else{
-            document.getElementById('container-graph').textContent = "Busca inválida"
+        .then(
+          response => {
+            this.dataPorDia = response.data;
+            if (response.data != "Invalid date" && response.data.length >= 1) {
+              this.carregaGrafico();
+            } else {
+              document.getElementById("container-graph").textContent =
+                "Busca inválida";
+            }
+          },
+          error => {
+            document.getElementById("container-graph").textContent =
+              "Busca inválida";
           }
-        }, error => {
-            document.getElementById('container-graph').textContent = "Busca inválida"
-        });
+        );
     },
     carregaGrafico: function() {
       let confirmados = this.dataPorDia.map(function(item) {
@@ -257,19 +311,21 @@ a {
 }
 
 .card-body {
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 .card-text-radius-top {
-  border-radius: 25px 25px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 
 .card-text-radius-bottom {
-  border-radius: 0 0 25px 25px;
+  border-radius: 0 0 5px 5px;
 }
-
-.card-text {
+.card-body .lead {
   font-size: 30px;
+}
+.card-text {
+  font-size: 20px;
 }
 
 /* COLORS CARDS */
@@ -315,8 +371,20 @@ a {
   height: 50vh;
 }
 
-.graph>div.card, .grafico{
+.graph > div.card,
+.grafico {
   width: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+  .card-body .lead {
+    font-size: 18px;
+  }
+  .card-text {
+    font-size: 11px;
+  }
+}
+.disabled .card {
+  opacity: 0.5 !important;
+}
 </style>

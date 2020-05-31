@@ -18,12 +18,12 @@ export default new Router({
         //     name: 'Dashboard',
         //     component: Dashboard
         // },
-        // {
-        //     path: '/pesquisa',
-        //     name: 'Dashboard',
-        //     component: Dashboard
-        // props: (route) => ({ search: route.query.q })
-        // },
+        {
+            path: '/pesquisa',
+            name: 'Pesquisa',
+            component: Dashboard,
+            props: (route) => ({ search: route.query.q })
+        },
         {
             path: '/formulario',
             name: 'Formulario',
