@@ -21,8 +21,8 @@ export default new Router({
         {
             path: '/pesquisa',
             name: 'Pesquisa',
-            component: Dashboard,
-            props: (route) => ({ search: route.query.q })
+            component: Dashboard
+            // props: (route) => ({ search: route.query.q })
         },
         {
             path: '/formulario',

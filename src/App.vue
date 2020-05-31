@@ -109,10 +109,7 @@ export default {
   },
   methods: {
     search: function() {
-      this.$router.push({
-        name: "/pesquisa",
-        query: {q: this.q },
-      });
+        alert("A fazer");
       return false;
     },
     getImageStyle(pais) {

@@ -175,7 +175,6 @@ export default {
     this.diaAnterior = d.getDate() - 1;
     this.carregarDados();
     this.carregarDadosPorDia();
-    this.carregarDadosUltimasNoticias();
   },
   methods: {
     carregarDados: function() {
