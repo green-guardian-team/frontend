@@ -2,24 +2,20 @@
   <div class="container">
     <div class="row">
       <div class="card card-body text-center col-md-4">
-        <p
-          class="lead color-red red-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
-        >{{data.totalConfirmed}}</p>
+        <p id="numeric" class="lead color-red red-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top">{{data.totalConfirmed}}</p>
         <p
           class="card-text color-red red-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
         >Confirmados</p>
       </div>
       <div class="card card-body text-center col-md-4 mr-5 ml-5">
-        <p
-          class="lead color-green green-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
+        <p id="numeric" class="lead color-green green-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
         >{{data.totalRecovered}}</p>
         <p
           class="card-text color-green green-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
         >Recuperados</p>
       </div>
       <div class="card card-body text-center">
-        <p
-          class="lead color-neutral neutral-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
+        <p id="numeric" class="lead color-neutral neutral-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
         >{{data.totalDeaths}}</p>
         <p
           class="card-text color-neutral neutral-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
@@ -224,6 +220,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
