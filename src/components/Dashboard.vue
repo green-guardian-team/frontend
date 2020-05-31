@@ -2,20 +2,24 @@
   <div class="container">
     <div class="row">
       <div class="card card-body text-center col-md-4">
-        <p id="numeric" class="lead color-red red-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top">{{data.totalConfirmed}}</p>
+        <p
+          class="lead color-red red-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
+        >{{data.totalConfirmed}}</p>
         <p
           class="card-text color-red red-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
         >Confirmados</p>
       </div>
       <div class="card card-body text-center col-md-4 mr-5 ml-5">
-        <p id="numeric" class="lead color-green green-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
+        <p
+          class="lead color-green green-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
         >{{data.totalRecovered}}</p>
         <p
           class="card-text color-green green-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
         >Recuperados</p>
       </div>
       <div class="card card-body text-center">
-        <p id="numeric" class="lead color-neutral neutral-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
+        <p
+          class="lead color-neutral neutral-bg-number text-center card-text pb-5 pt-5 mb-0 bold card-text-radius-top"
         >{{data.totalDeaths}}</p>
         <p
           class="card-text color-neutral neutral-bg mb-0 pb-3 pt-3 bold card-text-radius-bottom"
@@ -28,9 +32,9 @@
         <hr />
         <div class="d-flex justify-content-between">
           <div class="flex-start">
-            <!-- <select v-model="pais">
+            <select v-model="pais">
               <option v-for="(item, key) in paises" v-bind:key="key" v-bind:value="item">{{item}}</option>
-            </select> -->
+            </select>
             <label for="dataAnterior" class="ml-3">Selecione uma data do passado que deseja visualizar! </label>
             <select v-model="diaAnterior">
               <option v-for="(item, key) in diasAnteriores" v-bind:key="key" v-bind:value="item">{{item}}</option>
@@ -220,7 +224,6 @@ export default {
     }
   }
 };
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
