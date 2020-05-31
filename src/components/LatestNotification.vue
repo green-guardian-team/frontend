@@ -17,23 +17,17 @@
     </div>
   </div> 
   <div class="row">
-    <div class="col-12 col-lg-12 mb-5 col-sm-12" v-for="(item, key) in dataLatesNotification" v-bind:key="key">
+    <div class="col-12 col-lg-12 mb-5 col-sm-12" v-for="(item, key) in mergedArray" v-bind:key="key">
       <div class="card flex-row listing-card-container">
-        <div class="w-40 image-response">
-          <a v-bind:href="item.url">
-              <img class="card-img-left" v-bind:src="item.urlToImage" alt="Card image cap">
-              <span class="badge badge-pill badge-theme-1 position-absolute badge-top-left">NEW</span>
-          </a>
-        </div>
-        <div class="w-60 d-flex align-items-center">
+        <div class="w-100 d-flex align-items-center">
           <div class="card-body">
-            <a v-bind:href="item.url">
-                <h5 class="mb-3 listing-heading ellipsis"><div style="margin: 0px; padding: 0px; border: 0px;"></div>{{item.title}}</h5>
+            <a v-bind:href="item.link" target="_blank">
+                <h5 class="mb-3 listing-heading ellipsis"><div></div>{{item.title}}</h5>
             </a>
-            <p><div style="margin: 0px; padding: 0px; border: 0px;">{{item.description}}</div></p>
-            <small>{{item.content}}</small>
+            <div><p>{{item.text}}</p></div>
             <footer>
-              <p><div class="text-muted text-small mb-0 font-weight-light">{{item.publishedAt}}</div></p>
+              <div class="text-muted text-small mb-0 font-weight-light"><p>{{item.date}}</p></div>
+              <div>{{dataLatesNotificationBr}}</div>
             </footer>
           </div>
         </div>
@@ -85,10 +79,23 @@ export default {
   data() {
     return {
       dataLatesNotification: [],
+      dataLatesNotificationBr: [],
+      mergedArray: [],
     };
   },
   mounted() {
     this.reloadLatestNotification();
+    this.reloadLatestNotificationBr();
+  },
+  watch: {
+    dataLatesNotification: function() {
+      console.log(this.dataLatesNotification);
+      this.reloadContat();
+    },
+    dataLatesNotificationBr: function() {
+      console.log(this.dataLatesNotificationBr);
+      this.reloadContat();
+    }
   },
   methods: {
     reloadLatestNotification: function() {
@@ -97,9 +104,29 @@ export default {
           `http://api.coronatracker.com/news/trending`
         )
         .then(response => {
-          this.dataLatesNotification = response.data.items;
+          console.log(response.data.items);
+          this.dataLatesNotification = response.data.items.map((item) => {
+            return {
+              title: item.title,
+              text: item.description,
+              link: item.url,
+              date: item.publishedAt
+            }
+          });
         });
     },
+    reloadLatestNotificationBr: function() {
+      this.axios
+        .get(
+          `http://anthlab.com:56733/api/news/`
+        )
+        .then(response => {
+          this.dataLatesNotificationBr = response.data.news;
+        });
+    },
+    reloadContat: function() {
+      this.mergedArray = this.dataLatesNotification.concat(this.dataLatesNotificationBr);
+    }
   }
 };
 </script>
