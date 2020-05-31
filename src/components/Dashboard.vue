@@ -32,9 +32,6 @@
         <hr />
         <div class="d-flex justify-content-between">
           <div class="flex-start">
-            <select v-model="pais">
-              <option v-for="(item, key) in paises" v-bind:key="key" v-bind:value="item">{{item}}</option>
-            </select>
             <label for="dataAnterior" class="ml-3">Selecione uma data do passado que deseja visualizar! </label>
             <select v-model="diaAnterior">
               <option v-for="(item, key) in diasAnteriores" v-bind:key="key" v-bind:value="item">{{item}}</option>
@@ -65,14 +62,17 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
+  props: {
+    pais: {
+      default: "BR"
+    }
+  },
   data() {
     return {
       data: {},
       dataPorDia: [],
-      pais: "BR",
       paises: ["BR", "US", "CA", "FR"],
       anoAnterior: "2020",
       anosAnteriores: ["2019", "2020", "2021"],
@@ -128,6 +128,7 @@ export default {
     this.diaAnterior = d.getDate() -1;
     this.carregarDados();
     this.carregarDadosPorDia();
+    this.carregarDadosUltimasNoticias();
   },
   methods: {
     carregarDados: function() {
