@@ -103,10 +103,9 @@
       <div class="col-12 list" data-check-all="checkAll">
         <div class="card d-flex flex-row mb-3 active"  v-for="(item, key) in data" v-bind:key="key" >
           <div class="card flex-row listing-card-container">
-            <div class="w-40 position-relative">
+            <div class="img-response">
                 <a v-bind:href="item.link" target="_blank">
-                    <img class="card-img-left" src="img/hackathon-nasa.jpg" alt="Card image cap">
-                    <span class="badge badge-pill badge-theme-1 position-absolute badge-top-left">NEW</span>
+                    <img class="img-absolute" src="/img/hackathon-nasa.jpg" alt="Card image cap">
                 </a>
             </div>
             <div class="w-100 d-flex align-items-center">
