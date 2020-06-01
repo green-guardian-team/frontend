@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import Formulario from '@/components/Formulario'
 import LatestNotification from '@/components/LatestNotification'
+import MapaRegiao from '@/components/MapaRegiao'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
       path: '/latest-notification',
       name: 'LatestNotification',
       component: LatestNotification
+    },
+    {
+        path: '/mapa-regiao',
+        name: 'MapaRegiao',
+        component: MapaRegiao
     }
   ]
 })
