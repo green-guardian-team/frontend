@@ -145,12 +145,10 @@ export default {
 }
 
 .logotipo {
-  width: 92px !important;
+  width: 110px !important;
   height: auto !important;
   margin-top: -62px;
   margin-bottom: -60px;
-  border-left: 1px solid #c2c2c2;
-  background-color: rgb(226, 226, 226);
   border-radius: 0px 0px 0px 0px;
 }
 .pais {

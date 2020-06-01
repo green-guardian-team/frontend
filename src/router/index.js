@@ -4,7 +4,6 @@ import Dashboard from '@/components/Dashboard'
 import Formulario from '@/components/Formulario'
 import MapaRegiao from '@/components/MapaRegiao'
 
-
 Vue.use(Router)
 
 export default new Router({
@@ -13,11 +12,11 @@ export default new Router({
             name: 'Dashboard',
             component: Dashboard
         },
-        // {
-        //     path: '/map',
-        //     name: 'Dashboard',
-        //     component: Dashboard
-        // },
+        {
+            path: '/map',
+            name: 'Dashboard',
+            component: Dashboard
+        },
         {
             path: '/pesquisa',
             name: 'Pesquisa',
