@@ -66,8 +66,8 @@
                 <i class="iconsminds-google"></i> Map
               </router-link>
             </li>
-            <li v-bind:class="{'active': $route.path == '/pesquisa'}">
-              <router-link to="/pesquisa">
+            <li v-bind:class="{'active': $route.path == '/latest-notification-search'}">
+              <router-link to="/latest-notification-search">
                 <i class="iconsminds-air-balloon-1"></i> Pesquisa
               </router-link>
             </li>
