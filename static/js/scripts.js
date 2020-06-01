@@ -170,22 +170,22 @@ function loadStyle(href, callback) {
       .toggleClass("shown");
   });
 
-  $(document).on("click", function (event) {
-    if (
-      !(
-        $(event.target)
-          .parents()
-          .hasClass("theme-colors") ||
-        $(event.target)
-          .parents()
-          .hasClass("theme-button") ||
-        $(event.target).hasClass("theme-button") ||
-        $(event.target).hasClass("theme-colors")
-      )
-    ) {
-      if ($(".theme-colors").hasClass("shown")) {
-        $(".theme-colors").removeClass("shown");
-      }
-    }
-  });
+  // $(document).on("click", function (event) {
+  //   if (
+  //     !(
+  //       $(event.target)
+  //         .parents()
+  //         .hasClass("theme-colors") ||
+  //       $(event.target)
+  //         .parents()
+  //         .hasClass("theme-button") ||
+  //       $(event.target).hasClass("theme-button") ||
+  //       $(event.target).hasClass("theme-colors")
+  //     )
+  //   ) {
+  //     if ($(".theme-colors").hasClass("shown")) {
+  //       $(".theme-colors").removeClass("shown");
+  //     }
+  //   }
+  // });
 })(jQuery);

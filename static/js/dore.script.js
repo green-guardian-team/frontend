@@ -610,47 +610,6 @@ $.dore = function (element, options) {
       return false;
     });
 
-    $(".main-menu").on("click", "a", function (event) {
-      event.preventDefault();
-      var link = $(this)
-        .attr("href")
-        .replace("#", "");
-      if ($(".sub-menu ul[data-link='" + link + "']").length == 0) {
-        var target = $(this).attr("target");
-        if ($(this).attr("target") == null) {
-          window.open(link, "_self");
-        } else {
-          window.open(link, target);
-        }
-        return;
-      }
-
-      showSubMenu($(this).attr("href"));
-      var container = $("#app-container");
-      if (!$("#app-container").hasClass("menu-mobile")) {
-        if (
-          $("#app-container").hasClass("menu-sub-hidden") &&
-          (menuClickCount == 2 || menuClickCount == 0)
-        ) {
-          setMenuClassNames(3, false, link);
-        } else if (
-          $("#app-container").hasClass("menu-hidden") &&
-          (menuClickCount == 1 || menuClickCount == 3)
-        ) {
-          setMenuClassNames(2, false, link);
-        } else if (
-          $("#app-container").hasClass("menu-default") &&
-          !$("#app-container").hasClass("menu-sub-hidden") &&
-          (menuClickCount == 1 || menuClickCount == 3)
-        ) {
-          setMenuClassNames(0, false, link);
-        }
-      } else {
-        $("#app-container").addClass("sub-show-temporary");
-      }
-      return false;
-    });
-
     $(document).on("click", function (event) {
       if (
         !(

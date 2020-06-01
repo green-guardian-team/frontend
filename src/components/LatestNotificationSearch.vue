@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12">
           <div class="mb-2">
-            <h1>Product List</h1>
+            <h1>Pesquisa</h1>
             <div class="text-zero top-right-button-container">
                 <button type="button" class="btn btn-primary btn-lg top-right-button mr-1">ADD NEW</button>
                 <div class="btn-group">
@@ -26,12 +26,9 @@
             <nav class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">
                 <ol class="breadcrumb pt-0">
                     <li class="breadcrumb-item">
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                     </li>
-                    <li class="breadcrumb-item">
-                        <a href="#">Library</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    <li class="breadcrumb-item active" aria-current="page">Pesquisa</li>
                 </ol>
             </nav>
           </div>
