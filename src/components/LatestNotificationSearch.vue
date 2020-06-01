@@ -103,17 +103,16 @@
       <div class="col-12 list" data-check-all="checkAll">
         <div class="card d-flex flex-row mb-3 active"  v-for="(item, key) in data" v-bind:key="key" >
           <div class="card flex-row listing-card-container">
-            <div class="w-40 position-relative">
+            <div class="img-response">
                 <a v-bind:href="item.link" target="_blank">
-                    <img class="card-img-left" src="img/hackathon-nasa.jpg" alt="Card image cap">
-                    <span class="badge badge-pill badge-theme-1 position-absolute badge-top-left">NEW</span>
+                    <img class="img-absolute" src="/img/hackathon-nasa.jpg" alt="Card image cap">
                 </a>
             </div>
             <div class="w-100 d-flex align-items-center">
               <div class="card-body">
                 <a v-bind:href="item.link" target="_blank">
                    
-                    <i class="simple-icon-bubble mr-1 "> <smail class="text-muted text-small"> Linguage: <strong>{{item.language}}</strong></smail></i>
+                    <i class="simple-icon-bubble mr-1 "> <smail class="text-muted text-small"> Language: <strong>{{item.language}}</strong></smail></i>
                     <h5 class="mb-3 listing-heading ellipsis"><div></div>{{item.title}}</h5>
                 </a>
                 <div><p>{{item.text}}</p></div>
