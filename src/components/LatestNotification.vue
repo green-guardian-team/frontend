@@ -7,7 +7,7 @@
         <nav class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">
             <ol class="breadcrumb pt-0">
               <li class="breadcrumb-item">
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">Noticias</li>
             </ol>
@@ -24,7 +24,7 @@
             <i class="simple-icon-bubble mr-1 "> <small class="text-muted text-small"> Linguage: <strong>{{item.language}}</strong></small></i>
             <div class="image-response">
               <a v-bind:href="item.link" target="_blank">
-                <img class="img-fluid img-thumbnail" src="img/hackathon-nasa.jpg" alt="logo" style="rigth: 10px;">
+                <img class="img-fluid img-thumbnail" src="/img/logoGrennGuardian.png" alt="logo" style="rigth: 10px;">
               </a>
             </div>
             <a v-bind:href="item.link" target="_blank">
