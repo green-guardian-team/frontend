@@ -82,6 +82,7 @@ export default {
   },
   data() {
     return {
+      podeCarregar: false,
       loading: true,
       data: {},
       dataPorDia: [],
@@ -165,7 +166,8 @@ export default {
       this.carregarDadosPorDia();
     }
   },
-  mounted() {
+  created() {
+    this.podeCarregar = false;
     let d = new Date();
     this.ano = d.getFullYear();
     this.mes = "0" + (d.getMonth() + 1);
@@ -173,12 +175,20 @@ export default {
     this.anoAnterior = d.getFullYear();
     this.mesAnterior = "0" + d.getMonth();
     this.diaAnterior = d.getDate() - 1;
-    this.carregarDados();
-    this.carregarDadosPorDia();
-    this.carregarDadosUltimasNoticias();
+    this.podeCarregar = false;
+  },
+  mounted() {
+    setTimeout(() => {
+      this.podeCarregar = true;
+      this.carregarDados();
+      this.carregarDadosPorDia();
+    }, 1000);
   },
   methods: {
     carregarDados: function() {
+      if (this.podeCarregar == false) {
+        return null;
+      }
       this.loading = true;
       this.axios
         .get(
@@ -190,6 +200,9 @@ export default {
         });
     },
     carregarDadosPorDia: function() {
+      if (this.podeCarregar == false) {
+        return null;
+      }
       this.axios
         .get(
           `https://api.coronatracker.com/v4/analytics/trend/country?countryCode=${this.pais}&startDate=${this.anoAnterior}-${this.mesAnterior}-${this.diaAnterior}&endDate=${this.ano}-${this.mes}-${this.dia}`
