@@ -112,7 +112,7 @@
               <div class="card-body">
                 <a v-bind:href="item.link" target="_blank">
                    
-                    <i class="simple-icon-bubble mr-1 "> <smail class="text-muted text-small"> Linguage: <strong>{{item.language}}</strong></smail></i>
+                    <i class="simple-icon-bubble mr-1 "> <smail class="text-muted text-small"> Language: <strong>{{item.language}}</strong></smail></i>
                     <h5 class="mb-3 listing-heading ellipsis"><div></div>{{item.title}}</h5>
                 </a>
                 <div><p>{{item.text}}</p></div>

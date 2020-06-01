@@ -21,7 +21,7 @@
       <div class="card flex-row listing-card-container">
         <div class="w-100 d-flex align-items-center">
           <div class="card-body">
-            <i class="simple-icon-bubble mr-1 "> <small class="text-muted text-small"> Linguage: <strong>{{item.language}}</strong></small></i>
+            <i class="simple-icon-bubble mr-1 "> <small class="text-muted text-small"> Language: <strong>{{item.language}}</strong></small></i>
             <div class="image-response">
               <a v-bind:href="item.link" target="_blank">
                 <img class="img-fluid img-thumbnail" src="/img/logoGrennGuardian.png" alt="logo" style="rigth: 10px;">
