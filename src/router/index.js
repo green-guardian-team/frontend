@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import Formulario from '@/components/Formulario'
+import LatestNotification from '@/components/LatestNotification'
 import MapaRegiao from '@/components/MapaRegiao'
 import LatestNotificationSearch from '@/components/LatestNotificationSearch'
 
@@ -30,6 +31,16 @@ export default new Router({
       component: Formulario
     },
     {
+      path: '/latest-notification',
+      name: 'LatestNotification',
+      component: LatestNotification
+    },
+    {
+      path: '/mapa-regiao',
+      name: 'MapaRegiao',
+      component: MapaRegiao
+    },
+    {
       path: '/latest-notification-search',
       name: 'LatestNotificationSearch',
       component: LatestNotificationSearch
@@ -38,6 +49,6 @@ export default new Router({
       path: '/mapa-regiao',
       name: 'MapaRegiao',
       component: MapaRegiao
-    }    
+    } 
   ]
 })

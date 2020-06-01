@@ -76,6 +76,11 @@
                 <i class="iconsminds-air-balloon-1"></i> Formulário
               </router-link>
             </li>
+            <li v-bind:class="{'active': $route.path == '/latest-notification'}">
+              <router-link to="/latest-notification">
+                <i class="iconsminds-air-balloon-1"></i> Ultimas noticias
+              </router-link>
+            </li>
             <li v-bind:class="{'active': $route.path == '/querm_somos'}">
               <router-link to="/querm_somos">
                 <i class="iconsminds-air-balloon-1"></i> Quem somos
