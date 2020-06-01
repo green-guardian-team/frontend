@@ -21,13 +21,19 @@
       <div class="card flex-row listing-card-container">
         <div class="w-100 d-flex align-items-center">
           <div class="card-body">
+            <i class="simple-icon-bubble mr-1 "> <small class="text-muted text-small"> Linguage: <strong>{{item.language}}</strong></small></i>
+            <div class="image-response">
+              <a v-bind:href="item.link" target="_blank">
+                <img class="img-fluid img-thumbnail" src="img/hackathon-nasa.jpg" alt="logo" style="rigth: 10px;">
+              </a>
+            </div>
             <a v-bind:href="item.link" target="_blank">
-                <h5 class="mb-3 listing-heading ellipsis"><div></div>{{item.title}}</h5>
+                <p><h5 class="mb-3 listing-heading ellipsis"><div></div>{{item.title}}</h5></p>
             </a>
             <div><p>{{item.text}}</p></div>
             <footer>
               <div class="text-muted text-small mb-0 font-weight-light"><p>{{item.date}}</p></div>
-              <div>{{dataLatesNotificationBr}}</div>
+              <div><smail>Fonte: <strong>{{item.font}}</strong></smail></div>   
             </footer>
           </div>
         </div>
@@ -89,11 +95,9 @@ export default {
   },
   watch: {
     dataLatesNotification: function() {
-      console.log(this.dataLatesNotification);
       this.reloadContat();
     },
     dataLatesNotificationBr: function() {
-      console.log(this.dataLatesNotificationBr);
       this.reloadContat();
     }
   },
@@ -104,13 +108,14 @@ export default {
           `http://api.coronatracker.com/news/trending`
         )
         .then(response => {
-          console.log(response.data.items);
           this.dataLatesNotification = response.data.items.map((item) => {
             return {
               title: item.title,
               text: item.description,
               link: item.url,
-              date: item.publishedAt
+              date: item.publishedAt,
+              language: item.language,
+              font: item.font
             }
           });
         });
@@ -125,8 +130,17 @@ export default {
         });
     },
     reloadContat: function() {
-      this.mergedArray = this.dataLatesNotification.concat(this.dataLatesNotificationBr);
-    }
+      this.mergedArray = this.mergedArray.concat(this.dataLatesNotificationBr);
+      this.filterLanguege();
+    },
+    filterLanguege: function() {
+      this.mergedArray = this.mergedArray.map(p => {
+        let linguagens = {"eng": "english", "pt": "portugues"}
+
+        p.language = linguagens[p.language] || 'lingua não identificada'
+        return p
+      });
+    }    
   }
 };
 </script>
